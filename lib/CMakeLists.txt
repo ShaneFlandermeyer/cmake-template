@@ -1,0 +1,28 @@
+# Project lib source files
+message(STATUS "TODO: Replace TEMPLATE_PROJECT with the real project name in lib/CMakeLists.txt")
+list(
+  APPEND
+  TEMPLATE_PROJECT_SOURCES
+  # TODO: Add .cc files
+
+)
+set(TEMPLATE_PROJECT_SOURCES
+    "${TEMPLATE_PROJECT_SOURCES}"
+    PARENT_SCOPE)
+add_library(${CMAKE_PROJECT_NAME} SHARED ${TEMPLATE_PROJECT_SOURCES})
+target_include_directories(
+  ${CMAKE_PROJECT_NAME} PRIVATE
+  PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/${TEMPLATE_PROJECT_INCLUDE_DIR}>
+  PUBLIC $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/${TEMPLATE_PROJECT_INCLUDE_DIR}>
+  PUBLIC $<INSTALL_INTERFACE:include>)
+  # Link libraries below
+  # target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC lib1 lib2)
+
+  # Install the shared library file
+install(TARGETS ${CMAKE_PROJECT_NAME}
+EXPORT ${CMAKE_PROJECT_NAME}
+DESTINATION ${TEMPLATE_PROJECT_LIB_DIR})
+# Install the cmake config file
+install(EXPORT ${CMAKE_PROJECT_NAME}
+DESTINATION ${TEMPLATE_PROJECT_CMAKE_DIR})
+
