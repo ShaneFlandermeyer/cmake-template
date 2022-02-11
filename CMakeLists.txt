@@ -69,6 +69,7 @@ add_custom_target(uninstall
 # ##############################################################################
 add_subdirectory(include/${PROJECT_NAME})
 add_subdirectory(lib)
+add_subdirectory(app)
 
 ########################################################################
 # Install cmake search helper for this library
@@ -77,9 +78,8 @@ add_subdirectory(lib)
 if (NOT EXISTS ${CMAKE_SOURCE_DIR}/cmake/${CMAKE_PROJECT_NAME}_config.cmake)
   file(WRITE 
     ${CMAKE_SOURCE_DIR}/cmake/${CMAKE_PROJECT_NAME}_config.cmake
-    "get_filename_component(SELF_DIR "\${CMAKE_CURRENT_LIST_FILE}" PATH)\n"
-    "include(\${SELF_DIR}/\${CMAKE_PROJECT_NAME}.cmake)\n"
-    )
+    "get_filename_component(SELF_DIR \${CMAKE_CURRENT_LIST_FILE} PATH)\n"
+    "include(\${SELF_DIR}/\${CMAKE_PROJECT_NAME}.cmake)\n")
 endif()
 message(STATUS "TODO: Also change the TEMPLATE_PROJECT_CMAKE_DIR variable below")
 install(FILES cmake/${CMAKE_PROJECT_NAME}_config.cmake

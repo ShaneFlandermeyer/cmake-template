@@ -15,8 +15,8 @@ target_include_directories(
   PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/${TEMPLATE_PROJECT_INCLUDE_DIR}>
   PUBLIC $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/${TEMPLATE_PROJECT_INCLUDE_DIR}>
   PUBLIC $<INSTALL_INTERFACE:include>)
-  # Link libraries below
-  # target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC lib1 lib2)
+# Link libraries below
+# target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC lib1 lib2)
 
   # Install the shared library file
 install(TARGETS ${CMAKE_PROJECT_NAME}
