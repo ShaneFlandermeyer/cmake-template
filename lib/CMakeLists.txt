@@ -3,7 +3,7 @@ message(STATUS "TODO: Replace TEMPLATE_PROJECT with the real project name in lib
 list(
   APPEND
   TEMPLATE_PROJECT_SOURCES
-  # TODO: Add .cc files
+  test.cc
 
 )
 set(TEMPLATE_PROJECT_SOURCES

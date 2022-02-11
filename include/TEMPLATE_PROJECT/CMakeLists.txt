@@ -4,6 +4,7 @@ message(STATUS "TODO: Replace TEMPLATE_PROJECT with the real project name in inc
 list(
   APPEND
   TEMPLATE_PROJECT_HEADERS
+  test.h
 
 )
 

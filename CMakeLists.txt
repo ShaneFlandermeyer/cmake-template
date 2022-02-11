@@ -41,7 +41,7 @@ if (NOT CMAKE_MODULES_DIR)
 endif()
 
 message(STATUS
- "TODO: Once you have set the project name, remember to delete include/TEMPLATE_PROJECT")
+ "TODO: Once you have set the project name, rename include/TEMPLATE_PROJECT to match your project name")
 message(STATUS 
   "TODO: Replace TEMPLATE_PROJECT with the name of your project in the following variables")
 set(TEMPLATE_PROJECT_INCLUDE_DIR include/${CMAKE_PROJECT_NAME})
@@ -73,6 +73,14 @@ add_subdirectory(lib)
 ########################################################################
 # Install cmake search helper for this library
 ########################################################################
+# Create a _config.cmake file that will be used by any library using this one
+if (NOT EXISTS ${CMAKE_SOURCE_DIR}/cmake/${CMAKE_PROJECT_NAME}_config.cmake)
+  file(WRITE 
+    ${CMAKE_SOURCE_DIR}/cmake/${CMAKE_PROJECT_NAME}_config.cmake
+    "get_filename_component(SELF_DIR "\${CMAKE_CURRENT_LIST_FILE}" PATH)\n"
+    "include(\${SELF_DIR}/\${CMAKE_PROJECT_NAME}.cmake)\n"
+    )
+endif()
 message(STATUS "TODO: Also change the TEMPLATE_PROJECT_CMAKE_DIR variable below")
 install(FILES cmake/${CMAKE_PROJECT_NAME}_config.cmake
     DESTINATION ${TEMPLATE_PROJECT_CMAKE_DIR}
